@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import UrlLookupBox from './Url-lookup-view';
 import Axios from 'axios';
 
-Axios.defaults.baseURL = 'http://localhost:8080';
+Axios.defaults.baseURL = 'https://meta-dns-lookup.herokuapp.com/';
 
 const initialState = { 
   metaTags : {},
