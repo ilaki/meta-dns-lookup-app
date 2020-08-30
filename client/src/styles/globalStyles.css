@@ -1,0 +1,23 @@
+:root {
+    --color-dark : #00868F;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+      margin : 0;
+      padding : 0;
+      box-sizing : border-box;
+      /* background : rgb(179, 176, 176); */
+      background : var(--color-dark);
+  }
+
+
+
+  
+
+
+
