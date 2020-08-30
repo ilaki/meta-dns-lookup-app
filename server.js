@@ -5,19 +5,16 @@ const path = require('path');
 const metaget = require('metaget');
 const dns = require('dns');
 
-//Error handling middleware 
-function logErrors (err, req, res, next) {
-  console.error(err.stack)
-  next(err)
-}
-
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/client/build')));
-app.use(logErrors);
 
-app.get('/', logErrors , function(req,res) {
-    res.sendFile(path.join(__dirname, '/client/build/index.html'));
+app.get('/', function(_, res) {
+  res.sendFile(path.join(__dirname, './client/build/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
 })
 
 app.get('/metaTags', function(req,res){
@@ -45,7 +42,7 @@ app.get('/dnsRecords' , function(req,res){
   console.log(tUrl)
   
   dns.resolveTxt(tUrl,(err,records)=>{
-    if(err) res.status(500).end('Internal Error occured retrieving dnsTxt file data' );
+    if(err) res.status(500).send('Internal Error occured retrieving dnsTxt file data' );
     else {
       console.log(records);
     res.send(records.length? {serverResp : records, status : 200}: {serverResp : ['No dns text record found'] , status : 404})  
