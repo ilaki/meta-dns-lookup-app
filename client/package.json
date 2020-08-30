@@ -2,6 +2,7 @@
   "name": "meta-dns-lookup-app",
   "version": "0.1.0",
   "private": true,
+  "proxy" : "http://localhost:8080",
   "dependencies": {
     "axios": "^0.19.2",
     "react": "^16.13.1",
